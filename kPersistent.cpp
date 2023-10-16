@@ -81,7 +81,7 @@ void AROMA::MergeHashTable(){
         //if ((*HashTableMerge)[i] != numeric_limits<unsigned short>::max()){
         if ((*HashTableMerge)[i] != numeric_limits<int>::max()){
             this->SumOfNonNULL++;
-            this->SumOfHashValue += (*HashTableMerge)[i];
+            this->SumOfHashValue += ((*HashTableMerge)[i] + 1);
         }
     }
 }
@@ -137,7 +137,7 @@ vector<float> AROMA::EstimatedKSpread(string FlowLabel, long Random[], long Rand
     
     double EstimatedNumOfFlow = 0;
     
-    if (alpha >= 0.99){
+    if (alpha >= 0.95){
         //EstimatedNumOfFlow = (double)this->SumOfNonNULL * (double)this->SumOfNonNULL * (double)16777216 / this->SumOfHashValue;//24bit
         //EstimatedNumOfFlow = (double)this->SumOfNonNULL * (double)this->SumOfNonNULL * (double)1048576 / this->SumOfHashValue;//20bit
         EstimatedNumOfFlow = (double)this->SumOfNonNULL * (double)this->SumOfNonNULL * (double)pow(2, 16) / this->SumOfHashValue;//16bit
