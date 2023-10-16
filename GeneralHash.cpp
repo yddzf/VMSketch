@@ -65,3 +65,4 @@ long IntHash(long key){
   key = key ^ (key >> 22);
   return key;
 }
+//end
